@@ -110,4 +110,22 @@ app.post('/roomlist',(req,res) => {
   })  
 })
 
+app.post('/joinroom',(req,res) => {
+  const {username,room_code,h_index} = req.body
+  
+  var query1 = "SELECT id from student WHERE username='"+username+"';"
+  var user_id = ''
+  
+  con.query(query1, (err,response) => {
+    if (err) res.json(err)
+    user_id = response[0].id
+
+    var query2 = "INSERT INTO room_student (student_id,room_code,h_index) values ('" + user_id + "','" + room_code + "','" + h_index+"');"
+    con.query(query2, (err,response2) => {
+      if (err) res.json(err)
+      res.json(response2)
+    })
+  })
+})
+
 app.listen(3005)
