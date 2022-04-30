@@ -8,11 +8,12 @@ const Form = (props) => {
         var hi = 0;
 
         for(let i = 0; i < opts.length; i++){
-            if(opts[i].checked){
-                hi += opts[i].value
+            if(opts[i].checked === true){
+                hi += parseInt(opts[i].value)
             }
         }
         console.log(hi)
+        localStorage.setItem('hIndex',hi)
         props.updateHappinessIndex(hi.toString())
         window.location.href = '/result'
     }

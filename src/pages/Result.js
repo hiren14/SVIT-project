@@ -1,5 +1,5 @@
 const ResultPage = (props) => {
-    const hIndex = props.hIndex
+    const hIndex = localStorage.getItem('hIndex')
 
     const backHandler = () => {
         window.location.href = '/student'

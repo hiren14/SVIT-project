@@ -7,8 +7,11 @@ import Register from "./pages/Register";
 import StudentPage from "./pages/StudentPage";
 import JoinRoom from "./pages/JoinRoom";
 import Form from "./pages/form/Form";
-import ResultPage from "./pages/Result";
 
+import ResultPage from "./pages/Result";
+import TeacherPage from "./pages/TeacherPage";
+import CreateRoom from "./pages/CreateRoom";
+import RoomList from "./pages/RoomList";
 // hooks
 import { useState } from "react";
 
@@ -25,12 +28,15 @@ const App = () => {
       <BrowserRouter>
         <Routes>
             <Route path='/' element={<BasePage updateRole={updateRole}/>}></Route>
-            <Route path='/login' element={<Login/>}></Route>
+            <Route path='/login' element={<Login role={role}/>}></Route>
             <Route path='/register' element={<Register/>}></Route>
             <Route path='/student' element={<StudentPage/>}></Route>
             <Route path='/joinroom' element={<JoinRoom/>}></Route>
             <Route path='/form' element={<Form updateHappinessIndex={updateHappinessIndex}/>}></Route>
             <Route path='/result' element={<ResultPage hIndex={happinessIndex}/>}></Route>
+            <Route path='/teacherpage' element={<TeacherPage />}></Route>
+            <Route path='/createroom' element={<CreateRoom />}></Route>
+            <Route path='/roomlist' element={<RoomList/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
