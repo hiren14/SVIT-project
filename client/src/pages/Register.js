@@ -5,9 +5,11 @@ const Register = () => {
     const [email,updateEmail] = useState('')
     const [password,updatePassword] = useState('')
 
+    const role = localStorage.getItem('role')
+
     const onRegisterHandler = () => {
         console.log('registering')
-        const userData = {username:username,email:email,password:password}
+        const userData = {username:username,email:email,password:password,role:role}
         
         fetch('http://localhost:3005/register',{
             method: 'post',

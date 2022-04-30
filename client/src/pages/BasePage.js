@@ -3,7 +3,7 @@ import teacher_btn from '../res/teacher.png'
 
 const BasePage = (props) => {
     const roleHandler = (role) => {
-        localStorage.setItem('h_index',role)
+        localStorage.setItem('role',role)
         window.location.href = '/login'
         props.updateRole(role)
     }

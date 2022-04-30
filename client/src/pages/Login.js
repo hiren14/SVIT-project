@@ -3,9 +3,10 @@ import { useState } from "react"
 const Login = (props) => {
     const [username,updateUsername] = useState('')
     const [password,updatePassword] = useState('')
-    const role = localStorage.getItem('h_index')
+
+    const role = localStorage.getItem('role')
     const onLoginHandler = () => {
-        const userData = {username:username,password:password}
+        const userData = {username:username,password:password,role:role}
         
         fetch('http://localhost:3005/login',{
             method: 'post',
@@ -14,13 +15,15 @@ const Login = (props) => {
         })
         .then(resp => resp.json())
         .then(r => {
-            console.log(r)
-            console.log(role)
-            if (r === '0'){
+            if (r.length <= 0){
+                alert('Invalid user creds!')
+            }
+            else{
                 if (role === 'STUDENT'){
                     window.location.href = '/student'
                 }
                 else{
+                    localStorage.setItem('username_teacher',username)
                     window.location.href = '/teacherpage'
                 }
             }
